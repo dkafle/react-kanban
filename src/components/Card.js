@@ -1,5 +1,6 @@
 import React from 'react'
 import CheckList from './CheckList'
+import FocusText from './FocusText'
 
 class Card extends React.Component {
   constructor (props) {
@@ -12,8 +13,12 @@ class Card extends React.Component {
         <div className='card__title'>{value.title}</div>
         <div className='card__details'>{value.description}</div>
         <CheckList tasks={value.tasks} />
+        { value.status === 'todo'
+            ? <FocusText />
+            : null
+        }
       </div>
-    })
+    }, this)
     return (
       <div className='card'>
         {cards}
