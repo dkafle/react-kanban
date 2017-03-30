@@ -12,21 +12,30 @@ class KanbanBoard extends React.Component {
     })
     return items
   }
+  addTask (cardId, taskName) {
+  }
+  deleteTask (cardId, taskId, taskIndex) {
+  }
+  toggleTask (cardId, taskId, taskIndex) {
+  }
   render (props) {
     return (
       <div className='app'>
         <List
           listName='Todo'
           workItems={this._getItems('todo')} 
-          allowToAdd={true} />
+          allowToAdd={true} 
+          taskCallbacks={this.props.taskCallbacks}/>
         <List
           listName='In Progress'
           workItems={this._getItems('in-progress')} 
-          allowToAdd={false} />
+          allowToAdd={false} 
+          taskCallbacks={this.props.taskCallbacks} />
         <List
           listName='Done'
           workItems={this._getItems('done')} 
-          allowToAdd={false} />
+          allowToAdd={false} 
+          taskCallbacks={this.props.taskCallbacks} />
       </div>
     )
   }

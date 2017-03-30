@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import 'whatwg-fetch'
 import './App.css'
 import KanbaBoard from './components/KanbanBoard'
-import Contacts from './components/Contacts'
+//import Contacts from './components/Contacts'
 
 const API_URL = 'http://kanbanapi.pro-react.com';
 const API_HEADERS = {
@@ -15,6 +15,15 @@ class App extends Component {
     super(props)
     this.state = {data:[]}
   }
+  addTask (cardId, taskName) {
+   console.log(cardId, taskName);
+  }
+  deleteTask (cardId, taskId, taskIndex) {
+   console.log(cardId, taskId, taskIndex);
+  }
+  toggleTask (cardId, taskId, taskIndex) {
+    console.log(cardId, taskId, taskIndex);
+  }  
   componentDidMount () {
     fetch(API_URL + '/cards', {headers: API_HEADERS})
     .then((response) => response.json())
@@ -27,8 +36,13 @@ class App extends Component {
       <div className='App'>
         <KanbaBoard
           title='Kanban Board'
-          workItems={this.state.data} />
-          <Contacts />
+          workItems={this.state.data}
+          taskCallbacks={{
+                toggle: this.toggleTask.bind(this),
+                delete: this.deleteTask.bind(this),
+                add: this.addTask.bind(this)
+            }} />
+            {/*<Contacts />*/}
       </div>
     )
   }

@@ -12,7 +12,8 @@ class Card extends React.Component {
       return <div key={key}>
         <div className='card__title'>{value.title}</div>
         <div className='card__details'>{value.description}</div>
-        <CheckList tasks={value.tasks} />
+        <CheckList tasks={value.tasks} 
+        taskCallbacks={this.props.taskCallbacks} />
         { value.status === 'todo'
             ? <FocusText />
             : null

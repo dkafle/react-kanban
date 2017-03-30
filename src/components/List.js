@@ -10,7 +10,8 @@ class List extends React.Component {
     return (
       <div className='list'>
         <h1>{this.props.listName}</h1>
-        <Card items={this.props.workItems} />
+        <Card items={this.props.workItems} 
+        taskCallbacks={this.props.taskCallbacks} />
       </div>
     )
   }
