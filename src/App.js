@@ -1,50 +1,34 @@
 import React, { Component } from 'react'
+import 'whatwg-fetch'
 import './App.css'
 import KanbaBoard from './components/KanbanBoard'
+import Contacts from './components/Contacts'
 
-var data = [{
-  id: 1,
-  title: 'Card one title',
-  description: 'Card detailed description.',
-  status: 'todo',
-  tasks: [{
-    id: 1,
-    name: 'Task one',
-    done: true
-  }, {
-    id: 2,
-    name: 'Task two',
-    done: false
-  }, {
-    id: 3,
-    name: 'Task three',
-    done: false
-  }]
-}, {
-  id: 2,
-  title: 'W-I-P Item',
-  description: 'This is my work in progress todo card',
-  status: 'in-progress',
-  tasks: [{
-    id: 1,
-    name: 'working item task',
-    done: true
-  }]
-}, {
-  id: 3,
-  title: 'Card Three title',
-  description: 'Card detailed description',
-  status: 'done',
-  tasks: []
-}]
+const API_URL = 'http://kanbanapi.pro-react.com';
+const API_HEADERS = {
+  'Content-Type': 'application/json',
+  'Authorization': 'test'
+}
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {data:[]}
+  }
+  componentDidMount () {
+    fetch(API_URL + '/cards', {headers: API_HEADERS})
+    .then((response) => response.json())
+    .then((responseData) => {
+      this.setState({data: responseData})
+    })
+  }
   render () {
     return (
       <div className='App'>
         <KanbaBoard
           title='Kanban Board'
-          workItems={data} />
+          workItems={this.state.data} />
+          <Contacts />
       </div>
     )
   }
