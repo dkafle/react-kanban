@@ -4,7 +4,7 @@ import './App.css'
 import KanbaBoard from './components/KanbanBoard'
 import Contacts from './components/Contacts'
 
-const API_URL = 'http://kanbanapi.pro-react.com';
+const API_URL = 'http://kanbanapi.pro-react.com'
 const API_HEADERS = {
   'Content-Type': 'application/json',
   'Authorization': 'test'
@@ -13,7 +13,7 @@ const API_HEADERS = {
 class App extends Component {
   constructor (props) {
     super(props)
-    this.state = {data:[]}
+    this.state = {data: []}
   }
   componentDidMount () {
     fetch(API_URL + '/cards', {headers: API_HEADERS})
@@ -28,7 +28,7 @@ class App extends Component {
         <KanbaBoard
           title='Kanban Board'
           workItems={this.state.data} />
-          <Contacts />
+        <Contacts />
       </div>
     )
   }

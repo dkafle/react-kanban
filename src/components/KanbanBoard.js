@@ -17,15 +17,15 @@ class KanbanBoard extends React.Component {
       <div className='app'>
         <List
           listName='Todo'
-          workItems={this._getItems('todo')} 
-          allowToAdd={true} />
+          workItems={this._getItems('todo')}
+          allowToAdd />
         <List
           listName='In Progress'
-          workItems={this._getItems('in-progress')} 
+          workItems={this._getItems('in-progress')}
           allowToAdd={false} />
         <List
           listName='Done'
-          workItems={this._getItems('done')} 
+          workItems={this._getItems('done')}
           allowToAdd={false} />
       </div>
     )
